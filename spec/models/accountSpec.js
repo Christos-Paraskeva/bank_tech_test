@@ -11,4 +11,13 @@ describe('Account', function() {
       expect(account.balance).toEqual(0);
     });
   });
+
+  describe('account functionality', function() {
+    var account = new Account();
+
+    it("can deposit money", function() {
+      account.depositMoney(100);
+      expect(account.balance).toEqual(100);
+    });
+  });
 });
