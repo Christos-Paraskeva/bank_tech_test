@@ -1,0 +1,23 @@
+# Bank Tech Test
+
+MVP -  User can deposit and withdraw money
+
+```
+User stories for MVP:
+
+As a customer
+So that I can save my money
+I want to be able to deposit money into my account
+
+As a customer
+So that I can spend my money
+I want to be able to withdraw money
+```
+
+```
+Additional user stories:
+
+As a customer
+So that I can see how much money I have in my account
+I want to be able to print my bank statement
+```
