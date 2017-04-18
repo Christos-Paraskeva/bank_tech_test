@@ -7,5 +7,9 @@
     this.balance += amount;
   };
 
+  Account.prototype.withdrawMoney = function(amount) {
+    this.balance -= amount;
+  };
+
   exports.Account = Account;
 })(this);
