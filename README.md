@@ -20,4 +20,12 @@ Additional user stories:
 As a customer
 So that I can see how much money I have in my account
 I want to be able to print my bank statement
+
+As a customer
+So that I can see when I made the deposit
+I would like my statement to include the deposit date
+
+As a customer
+So that I can see what I made the withdrawal
+I would like my statement to include the withdrawal date
 ```
