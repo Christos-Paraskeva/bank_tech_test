@@ -1,16 +1,17 @@
 (function(exports) {
-  function ActivityLogger() {
+  function ActivityLogger(view = new AccountView()) {
     this.accountLog = [];
+    this.view = view;
   }
 
   ActivityLogger.prototype.logDeposit = function(amount, balance) {
     var date = this._formatDate(new Date());
-    this.accountLog.push(date, amount, "", balance);
+    this.accountLog.push([date, amount, "", balance]);
   };
 
   ActivityLogger.prototype.logWithdrawal = function(amount, balance) {
     var date = this._formatDate(new Date());
-    this.accountLog.push(date, "", amount, balance);
+    this.accountLog.push([date, "", amount, balance]);
   };
 
   ActivityLogger.prototype.addDate = function () {

@@ -7,7 +7,7 @@ describe('Account', function() {
       expect(account).toBeDefined();
     });
 
-    it("has a activity logger", function() {
+    it("initializes with ActivityLogger", function() {
       expect(account.activityLogger instanceof ActivityLogger).toBe(true);
     });
 

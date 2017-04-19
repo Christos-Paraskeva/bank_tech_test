@@ -16,6 +16,10 @@ describe('Activity Logger', function() {
     expect(activityLogger.accountLog).toEqual([]);
   });
 
+  it("is initialized with AccountView", function() {
+    expect(activityLogger.view instanceof AccountView).toBe(true);
+  });
+
   describe("Logs", function(){
 
     function AccountDouble() {
@@ -41,13 +45,13 @@ describe('Activity Logger', function() {
     it("deposit with the correct date and header", function() {
       var spy = spyOn(window, 'Date').and.returnValue(dummyDate);
       accountDouble.depositMoney(800);
-      expect(activityLogger.accountLog).toEqual(["13/06/2016", 800, "", 2800]);
+      expect(activityLogger.accountLog).toEqual([["13/06/2016", 800, "", 2800]]);
     });
 
     it("withdrawal with the correct date and header", function() {
       var spy = spyOn(window, 'Date').and.returnValue(dummyDate);
       accountDouble.withdrawMoney(450);
-      expect(activityLogger.accountLog).toEqual(["13/06/2016", "", 450, 1550]);
+      expect(activityLogger.accountLog).toEqual([["13/06/2016", "", 450, 1550]]);
     });
   });
 });
