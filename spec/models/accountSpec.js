@@ -33,7 +33,6 @@ describe('Account', function() {
     it("calls the activityLogger when depositing money", function() {
       var logDepositSpy = spyOn(account.activityLogger, 'logDeposit').and.callThrough();
       account.depositMoney(100);
-      console.log(logDepositSpy);
       expect(logDepositSpy).toHaveBeenCalled();
     });
 
@@ -44,8 +43,10 @@ describe('Account', function() {
       expect(account.balance).toEqual(100);
     });
 
-    // it("calls the activityLogger when withdrawing money", function() {
-    //
-    // });
+    it("calls the activityLogger when withdrawing money", function() {
+      var logWithdrawalSpy = spyOn(account.activityLogger, 'logWithdrawal').and.callThrough();
+      account.withdrawMoney(100);
+      expect(logWithdrawalSpy).toHaveBeenCalled();
+    });
   });
 });

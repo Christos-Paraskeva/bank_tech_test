@@ -8,6 +8,11 @@
     this.accountLog.push(date, amount, "", balance);
   };
 
+  ActivityLogger.prototype.logWithdrawal = function(amount, balance) {
+    var date = this._formatDate(new Date());
+    this.accountLog.push(date, "", amount, balance);
+  };
+
   ActivityLogger.prototype.addDate = function () {
     return new Date().toLocaleString();
   };
