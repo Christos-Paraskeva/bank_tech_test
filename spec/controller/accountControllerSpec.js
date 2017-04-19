@@ -34,5 +34,12 @@ describe('AccountController', function() {
       accountController.makeDeposit(200);
       expect(depositMoneySpy).toHaveBeenCalled();
     });
+
+    it("when making a withdrawal", function() {
+      var withdrawMoneySpy = spyOn(accountController.account, 'withdrawMoney').and.callThrough();
+      accountController.makeWithdrawal(200);
+      expect(withdrawMoneySpy).toHaveBeenCalled();
+    });
+
   });
 });
