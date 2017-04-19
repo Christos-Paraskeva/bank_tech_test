@@ -2,7 +2,29 @@ var accountController;
 
 describe('AccountController', function() {
 
-  accountController = new AccountController();
+  function ActivityLoggerDouble() {
+  }
+
+  ActivityLoggerDouble.prototype = {
+    sendToView: function() {
+    }
+  };
+
+  function AccountDouble(activityLoggerDouble = new ActivityLoggerDouble()) {
+    this.balance = 0;
+    this.activityLogDouble = activityLoggerDouble;
+  }
+
+  AccountDouble.prototype = {
+    depositMoney: function(amount) {
+    },
+    withdrawMoney: function(amount) {
+    }
+  };
+
+  beforeEach(function() {
+    accountController = new AccountController();
+  });
 
   it("exists", function() {
     expect(accountController).toBeDefined();
@@ -13,17 +35,6 @@ describe('AccountController', function() {
   });
 
   describe('Controller calls Account model', function() {
-
-    function AccountDouble() {
-      this.balance = 0;
-    }
-
-    AccountDouble.prototype = {
-      depositMoney: function(amount) {
-      },
-      withdrawMoney: function(amount) {
-      }
-    };
 
     beforeEach(function() {
       accountController = new AccountController(account = new AccountDouble());
@@ -41,5 +52,18 @@ describe('AccountController', function() {
       expect(withdrawMoneySpy).toHaveBeenCalled();
     });
 
+    describe('Controller calls ActivityLog model', function() {
+
+      beforeEach(function() {
+        var accountDouble = new AccountDouble(activityLoggerDouble = new ActivityLoggerDouble());
+        accountController = new AccountController(account = accountDouble);
+      });
+
+      it("when viewing statement", function() {
+        var viewStatementSpy = spyOn(accountController.account.activityLogger, 'sendToView').and.callThrough();
+        accountController.viewStatement();
+        expect(viewStatementSpy).toHaveBeenCalled();
+      });
+    });
   });
 });

@@ -14,10 +14,6 @@
     this.accountLog.push([date, "", amount, balance]);
   };
 
-  ActivityLogger.prototype.addDate = function () {
-    return new Date().toLocaleString();
-  };
-
   ActivityLogger.prototype.sendToView = function(statement = this.accountLog) {
     this.view.printStatement(statement);
   };

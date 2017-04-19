@@ -11,5 +11,9 @@
     this.account.withdrawMoney(amount);
   };
 
+  AccountController.prototype.viewStatement = function() {
+    this.account.activityLogger.sendToView();
+  };
+
   exports.AccountController = AccountController;
 })(this);
