@@ -20,6 +20,12 @@ describe('Activity Logger', function() {
     expect(activityLogger.view instanceof AccountView).toBe(true);
   });
 
+  it("calls the AccountView to display statement", function() {
+    var printStatementSpy = spyOn(activityLogger.view, 'printStatement').and.callThrough();
+    activityLogger.sendToView(['test']);
+    expect(printStatementSpy).toHaveBeenCalled();
+  });
+
   describe("Logs", function(){
 
     function AccountDouble() {
