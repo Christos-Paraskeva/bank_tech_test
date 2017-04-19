@@ -1,5 +1,6 @@
 (function(exports) {
-  function AccountController() {
+  function AccountController(account = new Account()) {
+    this.account = account;
   }
 
   exports.AccountController = AccountController;
