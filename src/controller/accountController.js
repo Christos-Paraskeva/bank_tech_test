@@ -3,5 +3,9 @@
     this.account = account;
   }
 
+  AccountController.prototype.makeDeposit = function(amount) {
+    this.account.depositMoney(amount);
+  };
+
   exports.AccountController = AccountController;
 })(this);
