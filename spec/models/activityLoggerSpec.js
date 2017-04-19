@@ -12,6 +12,21 @@ describe('Activity Logger', function() {
     }
   };
 
+  function AccountDouble() {
+    this.balance = 2000;
+  }
+
+  AccountDouble.prototype = {
+    depositMoney: function(amount, balance) {
+      this.balance += amount;
+      activityLogger.logDeposit(amount, this.balance);
+    },
+    withdrawMoney: function(amount, balance) {
+      this.balance -= amount;
+      activityLogger.logWithdrawal(amount, this.balance);
+    }
+  };
+
   beforeEach(function() {
     activityLogger = new ActivityLogger(view = new AccountViewDouble());
     output = formattedOutput();
@@ -36,21 +51,6 @@ describe('Activity Logger', function() {
   });
 
   describe("Logs", function(){
-
-    function AccountDouble() {
-      this.balance = 2000;
-    }
-
-    AccountDouble.prototype = {
-      depositMoney: function(amount, balance) {
-        this.balance += amount;
-        activityLogger.logDeposit(amount, this.balance);
-      },
-      withdrawMoney: function(amount, balance) {
-        this.balance -= amount;
-        activityLogger.logWithdrawal(amount, this.balance);
-      }
-    };
 
     beforeEach(function() {
       accountDouble = new AccountDouble();
