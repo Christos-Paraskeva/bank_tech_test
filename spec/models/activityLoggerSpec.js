@@ -1,29 +1,38 @@
 var activityLogger;
 var dummyDate;
-var formatDate;
+var output;
 
 describe('Activity Logger', function() {
 
+  function AccountViewDouble() {
+  }
+
+  AccountViewDouble.prototype = {
+    printStatement: function(activityLog) {
+    }
+  };
+
   beforeEach(function() {
-    activityLogger = new ActivityLogger();
+    activityLogger = new ActivityLogger(view = new AccountViewDouble());
+    output = formattedOutput();
   });
 
   it("exists", function() {
     expect(activityLogger).toBeDefined();
   });
 
-  it("is initialized with an empty accountLog array", function(){
-    expect(activityLogger.accountLog).toEqual([]);
+  it("is initialized with the accountLog array", function(){
+    expect(activityLogger.accountLog).toEqual([['Date', 'Credit', 'Debit', 'Balance']]);
   });
 
   it("is initialized with AccountView", function() {
-    expect(activityLogger.view instanceof AccountView).toBe(true);
+    expect(activityLogger.view instanceof AccountViewDouble).toBe(true);
   });
 
   it("calls the AccountView to display statement", function() {
     var printStatementSpy = spyOn(activityLogger.view, 'printStatement').and.callThrough();
-    activityLogger.sendToView(['test']);
-    expect(printStatementSpy).toHaveBeenCalled();
+    activityLogger.sendToView(output);
+    expect(printStatementSpy).toHaveBeenCalledWith(output);
   });
 
   describe("Logs", function(){
@@ -51,13 +60,13 @@ describe('Activity Logger', function() {
     it("deposit with the correct date and header", function() {
       var spy = spyOn(window, 'Date').and.returnValue(dummyDate);
       accountDouble.depositMoney(800);
-      expect(activityLogger.accountLog).toEqual([["13/06/2016", 800, "", 2800]]);
+      expect(activityLogger.accountLog).toEqual([ [ 'Date', 'Credit', 'Debit', 'Balance' ], [ '13/06/2016', 800, '', 2800 ] ]);
     });
 
     it("withdrawal with the correct date and header", function() {
       var spy = spyOn(window, 'Date').and.returnValue(dummyDate);
       accountDouble.withdrawMoney(450);
-      expect(activityLogger.accountLog).toEqual([["13/06/2016", "", 450, 1550]]);
+      expect(activityLogger.accountLog).toEqual([ [ 'Date', 'Credit', 'Debit', 'Balance' ], [ '13/06/2016', '', 450, 1550 ] ]);
     });
   });
 });

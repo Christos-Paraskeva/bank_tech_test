@@ -1,6 +1,6 @@
 (function(exports) {
   function ActivityLogger(view = new AccountView()) {
-    this.accountLog = [];
+    this.accountLog = [['Date', 'Credit', 'Debit', 'Balance']];
     this.view = view;
   }
 
@@ -18,7 +18,7 @@
     return new Date().toLocaleString();
   };
 
-  ActivityLogger.prototype.sendToView = function (statement = this.accountLog) {
+  ActivityLogger.prototype.sendToView = function(statement = this.accountLog) {
     this.view.printStatement(statement);
   };
 
