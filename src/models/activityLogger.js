@@ -6,12 +6,12 @@
 
   ActivityLogger.prototype.logDeposit = function(amount, balance) {
     var date = this._formatDate(new Date());
-    this.accountLog.push(new Transaction(date, null, amount, balance));
+    this.accountLog.push(new Transaction(date, "", amount, balance));
   };
 
   ActivityLogger.prototype.logWithdrawal = function(amount, balance) {
     var date = this._formatDate(new Date());
-    this.accountLog.push(new Transaction(date, amount, null, balance));
+    this.accountLog.push(new Transaction(date, amount, "", balance));
   };
 
   ActivityLogger.prototype.sendToView = function(statement = this.accountLog) {

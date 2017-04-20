@@ -1,5 +1,5 @@
 (function(exports) {
-  function Transaction(date=null, debit=null, credit=null, revisedBalance=null) {
+  function Transaction(date=null, debit="", credit="", revisedBalance=null) {
     this.date = date;
     this.debit = debit;
     this.credit = credit;

@@ -1,6 +1,6 @@
 (function(exports) {
   function AccountView() {
-    this.template = "Date || Debit || Credit || Balance";
+    this.template = "    Date    || Debit||Credit||Balance";
   }
 
   AccountView.prototype.printStatement = function(activityLog) {

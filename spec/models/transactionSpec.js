@@ -10,16 +10,16 @@ describe('Transaction', function() {
 
   describe('When initialized', function() {
 
-    it("has a null date value", function() {
+    it("has a null default date value", function() {
       expect(transaction.date).toEqual(null);
     });
 
-    it("has a null debit value", function() {
-      expect(transaction.debit).toEqual(null);
+    it("has an empty string default debit value", function() {
+      expect(transaction.debit).toEqual("");
     });
 
-    it("has a null credit value", function() {
-      expect(transaction.credit).toEqual(null);
+    it("has an empty string default credit value", function() {
+      expect(transaction.credit).toEqual("");
     });
 
     it("has a null revisedBalance value", function() {
