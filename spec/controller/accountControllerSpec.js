@@ -12,7 +12,7 @@ describe('AccountController', function() {
 
   function AccountDouble(activityLoggerDouble = new ActivityLoggerDouble()) {
     this.balance = 0;
-    this.activityLogDouble = activityLoggerDouble;
+    this.activityLogger = activityLoggerDouble;
   }
 
   AccountDouble.prototype = {
@@ -41,6 +41,9 @@ describe('AccountController', function() {
     });
 
     it("when making a deposit", function() {
+      console.log('1')
+      console.log(accountController)
+      console.log('2')
       var depositMoneySpy = spyOn(accountController.account, 'depositMoney').and.callThrough();
       accountController.makeDeposit(200);
       expect(depositMoneySpy).toHaveBeenCalled();
