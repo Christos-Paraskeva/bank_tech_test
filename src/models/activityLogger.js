@@ -1,6 +1,5 @@
 (function(exports) {
   function ActivityLogger(view = new AccountView()) {
-    this.template = "Date || Debit || Credit || Balance";
     this.accountLog = [];
     this.view = view;
   }

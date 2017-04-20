@@ -44,10 +44,6 @@ describe('Activity Logger', function() {
     expect(activityLogger.view instanceof AccountViewDouble).toBe(true);
   });
 
-  it('has a default template', function() {
-    expect(activityLogger.template).toEqual("Date || Debit || Credit || Balance");
-  });
-
   it("calls the AccountView to display statement", function() {
     var printStatementSpy = spyOn(activityLogger.view, 'printStatement').and.callThrough();
     activityLogger.sendToView(output);
