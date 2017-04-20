@@ -1,9 +1,9 @@
 (function(exports) {
-  function Transaction() {
-    this.date = null;
-    this.debit = null;
-    this.credit = null;
-    this.revisedBalance = null;
+  function Transaction(date=null, debit=null, credit=null, revisedBalance=null) {
+    this.date = date;
+    this.debit = debit;
+    this.credit = credit;
+    this.revisedBalance = revisedBalance;
   }
 
   exports.Transaction = Transaction;
