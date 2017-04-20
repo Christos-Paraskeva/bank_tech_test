@@ -15,5 +15,9 @@
     this.activityLogger.logWithdrawal(amount, this.balance);
   };
 
+  // Account.prototype._decimalAmount = function(amount) {
+  //   return Number(amount).toFixed(2);
+  // };
+
   exports.Account = Account;
 })(this);

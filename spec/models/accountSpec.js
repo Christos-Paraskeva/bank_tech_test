@@ -11,8 +11,8 @@ describe('Account', function() {
       expect(account.activityLogger instanceof ActivityLogger).toBe(true);
     });
 
-    it("initializes with 0.00 balance", function() {
-      expect(account.balance).toEqual(0.00);
+    it("initializes with 0 balance", function() {
+      expect(account.balance).toEqual(0);
     });
   });
 
@@ -22,12 +22,17 @@ describe('Account', function() {
     beforeEach(function() {
       // can put this in a helper method ('reset balance')
       account = new Account();
-      this.balance = 0.00;
+      account.balance = 200;
     });
 
     it("can deposit money", function() {
       account.depositMoney(100);
-      expect(account.balance).toEqual(100);
+      expect(account.balance).toEqual(300);
+    });
+
+    it("can deposit money rounded to 2 decimal places", function() {
+      account.depositMoney(150.57);
+      expect(account.balance).toEqual(350.57);
     });
 
     it("calls the activityLogger when depositing money", function() {
@@ -37,10 +42,15 @@ describe('Account', function() {
     });
 
     it("can withdraw money", function() {
-      account.depositMoney(200);
       // can include the below within expect statement ('to change'?)
       account.withdrawMoney(100);
       expect(account.balance).toEqual(100);
+    });
+
+    it("can withdraw money rounded to 2 decimal places", function() {
+      // can include the below within expect statement ('to change'?)
+      account.withdrawMoney(80.50);
+      expect(account.balance).toEqual(119.50);
     });
 
     it("calls the activityLogger when withdrawing money", function() {
