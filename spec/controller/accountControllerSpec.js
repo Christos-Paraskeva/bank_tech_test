@@ -75,6 +75,14 @@ describe('AccountController', function() {
       it("should raise an error if withdrawal is called with 0", function(){
         expect(function() {accountController.makeWithdrawal(0)}).toThrow("Please enter a positive number");
       });
+
+      it("should raise an error if deposit is called with a negative number", function(){
+        expect(function() {accountController.makeDeposit(-1)}).toThrow("Please enter a positive number");
+      });
+
+      it("should raise an error if withdrawal is called with a negative number", function(){
+        expect(function() {accountController.makeWithdrawal(-1)}).toThrow("Please enter a positive number");
+      });
     });
   });
 });
