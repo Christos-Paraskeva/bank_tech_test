@@ -41,9 +41,6 @@ describe('AccountController', function() {
     });
 
     it("when making a deposit", function() {
-      console.log('1')
-      console.log(accountController)
-      console.log('2')
       var depositMoneySpy = spyOn(accountController.account, 'depositMoney').and.callThrough();
       accountController.makeDeposit(200);
       expect(depositMoneySpy).toHaveBeenCalled();
@@ -59,13 +56,32 @@ describe('AccountController', function() {
 
       beforeEach(function() {
         var accountDouble = new AccountDouble(activityLoggerDouble = new ActivityLoggerDouble());
-        accountController = new AccountController(account = accountDouble);
+        // accountController = new AccountController(account = accountDouble);
       });
 
       it("when viewing statement", function() {
         var viewStatementSpy = spyOn(accountController.account.activityLogger, 'sendToView').and.callThrough();
         accountController.viewStatement();
         expect(viewStatementSpy).toHaveBeenCalled();
+      });
+    });
+
+    describe('Edge cases', function() {
+
+      it("should raise an error if deposit is called with 0", function(){
+        expect(function() {accountController.makeDeposit(0)}).toThrow("Please enter a positive number");
+      });
+
+      it("should raise an error if withdrawal is called with 0", function(){
+        expect(function() {accountController.makeWithdrawal(0)}).toThrow("Please enter a positive number");
+      });
+
+      it("should raise an error if deposit is called with a negative number", function(){
+        expect(function() {accountController.makeDeposit(-1)}).toThrow("Please enter a positive number");
+      });
+
+      it("should raise an error if withdrawal is called with a negative number", function(){
+        expect(function() {accountController.makeWithdrawal(-1)}).toThrow("Please enter a positive number");
       });
     });
   });
