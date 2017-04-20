@@ -11,8 +11,8 @@ describe('Account', function() {
       expect(account.activityLogger instanceof ActivityLogger).toBe(true);
     });
 
-    it("initializes with 0 balance", function() {
-      expect(account.balance).toEqual(0);
+    it("initializes with 0.00 balance", function() {
+      expect(account.balance).toEqual(0.00);
     });
   });
 
@@ -22,7 +22,7 @@ describe('Account', function() {
     beforeEach(function() {
       // can put this in a helper method ('reset balance')
       account = new Account();
-      this.balance = 0;
+      this.balance = 0.00;
     });
 
     it("can deposit money", function() {

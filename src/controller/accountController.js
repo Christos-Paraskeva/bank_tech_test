@@ -4,15 +4,29 @@
   }
 
   AccountController.prototype.makeDeposit = function(amount) {
-    this.account.depositMoney(amount);
+    if (this._invalidAmount(amount)) {
+    }
+    else {
+      this.account.depositMoney(amount);
+    }
   };
 
   AccountController.prototype.makeWithdrawal = function(amount) {
-    this.account.withdrawMoney(amount);
+    if (this._invalidAmount(amount)) {
+    }
+    else {
+      this.account.withdrawMoney(amount);
+    }
   };
 
   AccountController.prototype.viewStatement = function() {
     this.account.activityLogger.sendToView();
+  };
+
+  AccountController.prototype._invalidAmount = function(amount) {
+    if (amount <= 0) {
+      throw('Please enter a positive number');
+    }
   };
 
   exports.AccountController = AccountController;
