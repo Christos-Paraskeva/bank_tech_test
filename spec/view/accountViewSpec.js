@@ -9,7 +9,7 @@ describe('AccountView', function() {
   });
 
   it('has a default template', function() {
-    expect(accountView.template).toEqual("    Date    || Debit||Credit||Balance");
+    expect(accountView.template).toEqual('    Date    || Debit || Credit ||  Balance');
   });
 
   describe('Viewing Statement', function() {
