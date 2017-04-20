@@ -67,9 +67,9 @@ describe('Activity Logger', function() {
       expect(activityLogger.accountLog[0].date).toEqual('13/06/2016');
     });
 
-    it("sets the correct credit", function() {
+    it("sets the correct credit and rounds it to 2 decimal places", function() {
       activityLogger.logDeposit(800)
-      expect(activityLogger.accountLog[0].credit).toEqual(800);
+      expect(activityLogger.accountLog[0].credit).toEqual(Number(800).toFixed(2));
     });
 
     it("sets the correct revised balance", function() {
@@ -94,9 +94,9 @@ describe('Activity Logger', function() {
         expect(activityLogger.accountLog[0].date).toEqual('13/06/2016');
       });
 
-      it("sets the correct credit", function() {
+      it("sets the correct debit and rounds it to 2 decimal places", function() {
         activityLogger.logWithdrawal(800)
-        expect(activityLogger.accountLog[0].debit).toEqual(800);
+        expect(activityLogger.accountLog[0].debit).toEqual(Number(800).toFixed(2));
       });
 
       it("sets the correct revised balance", function() {
