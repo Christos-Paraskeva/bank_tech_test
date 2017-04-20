@@ -18,7 +18,6 @@
     this.view.printStatement(statement);
   };
 
-  // this can be moved to the view / date will need to be stored with time to make it chronological
   ActivityLogger.prototype._formatDate = function(date) {
       var d = date.getDate();
       var day = (d < 10) ? '0' + d : d;

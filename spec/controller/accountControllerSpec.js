@@ -56,7 +56,6 @@ describe('AccountController', function() {
 
       beforeEach(function() {
         var accountDouble = new AccountDouble(activityLoggerDouble = new ActivityLoggerDouble());
-        // accountController = new AccountController(account = accountDouble);
       });
 
       it("when viewing statement", function() {
